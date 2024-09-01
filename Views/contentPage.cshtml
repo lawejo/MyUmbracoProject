@@ -1,0 +1,78 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "master.cshtml";
+
+    //Dynamic case  Image
+    var caseImageMedia = Model.Value<IPublishedContent>("caseImage");
+    string caseImageUrl = string.Empty;
+
+    if (caseImageMedia != null)
+    {
+        caseImageUrl = caseImageMedia.Url();
+    }
+
+    var buttonText = Model.Value<string>("buttonText");
+    var buttonUrl = Model.Value<string>("buttonUrl");
+    bool showCases = Model.Value<bool>("showCases");
+}
+
+<section class="hero-section">
+    <div>
+
+        <h1>
+            @Model.Value("h1")
+        </h1>
+        <p>
+            @Model.Value("leadParagraph")
+        </p>
+    </div>
+
+    <div>
+        @if (!string.IsNullOrWhiteSpace(buttonText))
+
+        {
+            <a target="_blank" href="@buttonUrl" class="primary-button">@buttonText</a>
+        }
+    </div>
+    <p>@Model.Value("leadText")</p>
+</section>
+
+
+@if (showCases){
+<section>
+
+    @{
+        var selection = Umbraco.Content(Guid.Parse("562c581c-09ab-43fc-9271-132c0790ffdc"))
+
+        .Children()
+
+        .Where(x => x.IsVisible())
+
+        .OrderBy(x => x.CreateDate);
+    }
+    <div class="cases-container">
+        @foreach (var item in selection)
+
+        {
+
+            var itemMedia = item.Value<IPublishedContent>("caseImage");
+            var itemName = item.Value<string>("clientName");
+            var itemHeader = item.Value<string>("header");
+            var itemLeadText = item.Value<string>("leadText");
+
+            var itemMediaUrl = itemMedia?.Url();
+
+            <article class="case">
+                <img src="@itemMediaUrl" />
+                <a href="@item.Url()" class="case-name">@itemName</a>
+                <h2>@itemHeader</h2>
+                <p>@itemLeadText</p>
+                <a href="#" class="primary-button">Læs mere om vores samarbejde for @itemName</a>
+            </article>
+        }
+    </div>
+
+
+</section>
+}

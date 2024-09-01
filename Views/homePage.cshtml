@@ -1,0 +1,30 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using System.Diagnostics;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "master.cshtml";
+	var mediaItem = Umbraco.Media(Guid.Parse("03b66a9f-1b73-4a9e-b39c-482f4cdf5ea2"));
+
+	string url = string.Empty;
+	if (mediaItem != null)
+    {
+        url = mediaItem.Url();
+     }
+	}
+
+<section class="hero-section">
+	<div>
+		<h1>@Model.Value("h1")</h1>
+		<p>@Model.Value("leadText")</p>
+		<div class="hero-buttons">
+			<a href="@Model.Value("buttonPrimaryUrl")" class="primary-button">@Model.Value("buttonPrimaryText")</a>
+			<a href="@Model.Value("buttonSecondaryUrl")">@Model.Value("buttonSecondaryText")</a>
+		</div>
+	</div>
+</section>
+
+<section>
+<h2></h2>
+<h4></h4>
+<p></p>
+</section>

@@ -1,0 +1,106 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "master.cshtml";
+}
+<!DOCTYPE HTML>
+<html>
+	<h1>THIS IS ARTICLES MAIN</h1>
+		<!-- Jumbotron, w title -->
+		<div class="jumbotron text-center jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-1">@Model.Value("articleTitle")</h1>
+				<p>What we do when we do what we do - and why!</p>
+			</div>
+		</div>
++++++ Main container +++++++++++
+		<!-- Main container -->
+		<div class="container">
+
+			<!-- Featured blogpost -->
+			<div class="row section">
+				<div class="col-md-12">
+					@Model.Value("articlesBodyText")
+				</div>
+			</div>
+
+			<!-- Latest blog posts -->
+			<div class="row section">
+				<div class="col-md-12">
+					<h3>Latest stories</h3>
+
+
+@{
+	var selection = Umbraco.Content(Guid.Parse("c418ff49-17ed-4185-98a6-91de37418a2c"))
+    .ChildrenOfType("articlesItem")
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate);
+}
+	@foreach (var item in selection)
+	{
+		<article class="special">
+    <div class="articledate" > @item.CreateDate </div>
+    <div class="articletitle"><a href="@item.Url()">@item.Name()</a></div>
+    <div class="articlepreview">@Html.Truncate(item.Value("articleContent").ToString(), 20, true)<a href="@item.Url()">Read @item.Name()..</a></div>
+</article>
+	}
+
+
+	@foreach (var item in selection)
+	{
+		<article class="special">
+    <div class="articledate" > @item.CreateDate </div>
+    <div class="articletitle"><a href="@item.Url()">@item.Name()</a></div>
+    <div class="articlepreview">@Html.Truncate(item.Value("articleContent").ToString(), 20, true)<a href="@item.Url()">Read @item.Name()..</a></div>
+</article>
+	}
+
+
+				</div>
+			</div>
+
+			<!-- Blog Post Query goes here. -->
+			<div class="row">
+				<div class="col-md-4">
+					<a href="Blogpost.html" class="featured-link"><div class="thumbnail-blog">
+						<div class="thumbnail-img" style="background-image:url('/images/Press.jpg')"></div>
+						<h5>Umbraco <3 YouTube</h5>
+					</div></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#" class="featured-link"><div class="thumbnail-blog">
+						<div class="thumbnail-img" style="background-image:url('/images/sofie-hammock.jpg')"></div>
+						<h5>A day in a Documentation Curators life</h5>
+					</div></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#" class="featured-link"><div class="thumbnail-blog">
+						<div class="thumbnail-img" style="background-image:url('/images/heart-DNS.png')"></div>
+						<h5>New product: Umbraco Heartcore</h5>
+					</div></a>
+				</div>
+
+				<div class="col-md-4">
+					<a href="#" class="featured-link"><div class="thumbnail-blog">
+						<div class="thumbnail-img" style="background-image:url('/images/uPackage.png')"></div>
+						<h5>Packages.. Packages every where!</h5>
+					</div></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#" class="featured-link"><div class="thumbnail-blog">
+						<div class="thumbnail-img" style="background-image:url('/images/CG-virgins.JPG')"></div>
+						<h5>Just how flexible is Umbraco?</h5>
+					</div></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#" class="featured-link"><div class="thumbnail-blog">
+						<div class="thumbnail-img" style="background-image:url('/images/confetti.jpg')"></div>
+						<h5>Festival season of 2020</h5>
+					</div></a>
+				</div>
+			</div>
+
+		</div>
+		
+		+++++ Main container +++++++++++
+</html>

@@ -1,0 +1,97 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "master.cshtml";
+}
+
+<!DOCTYPE HTML>
+		
+		<!-- Jumbotron, w title -->
+		<div class="jumbotron text-center jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-1">@Model.Value("articleTitle")</h1>
+				<p>And this is <span class="font-weight-bold">only</span> the beginning.</p>
+			</div>
+		</div>
+<h1>THIS THIS ARTICLES ITEM</h1>
+		<!-- Main container -->
+--------- Blogpost meta data----------------
+		<!-- Blogpost meta data -->
+		<div class="container-fluid grey-bg">
+			<div class="container">
+				<div class="row section">
+					<div class="col-md-6">
+						@Model.Value("articleContent")
+					</div>
+				</div>
+			</div>
+		</div>		
+--------- Blogpost meta data----------------
+
+		<!-- Blogpost content -->
+        <div class="container">
+
+			<div class="row section">
+				<div class="col-md-12">
+					<p class="intro">The end of 2019 is approaching and with this, also the last Product Update of the year. 
+						And what a year it has been - especially when we’re talking “product”! Two major product launches with Umbraco 8 and Umbraco Heartcore. 
+						2019 also saw a record-breaking amount of PRs submitted, mainly due to a record-shattering Hacktoberfest 🙌 
+						It’s absolutely amazing to see how much Umbraco 8 has evolved in the past 10 months, not least thanks to the friendly and very productive Umbraco community. 
+						I cannot wait to see what happens in 2020! 
+						But, before we get to that, let’s have a look at what we’ve been working on and what you can expect in the near future.</p>
+					<br />
+					<h3>New Release: Forms API & Content Filtering for Umbraco Heartcore</h3>
+					<p>December 17th, we released two new features for our headless saas offering, Umbraco Heartcore; Form API and Content Filtering.
+						<br /><br />
+						<span class="font-weight-bold">Forms API</span><br />
+						You’ll find that the REST API has been expanded to include forms created with Umbraco Forms. 
+						This means you can create forms (contact forms, questionnaires etc.) directly in the backoffice, 
+						complete with conditionals and validation, and get all you need to render these forms in your presentation layer. 
+						All you need to do is include a form on a content node using the Form Picker and you’ll see the form data necessary 
+						to render the form as part of the JSON response - you can also retrieve forms independent of content. 
+						This also includes endpoints for posting form entries, so they will be stored in your Heartcore project and can utilise multi-step workflows.
+						<br /><br />
+						<span class="font-weight-bold">Content filtering</span><br />
+						The REST API also includes a new endpoint for content delivery that lets you do more advanced filtering. 
+						Previously, if you wanted to filter content based on a search term, you could utilise the search endpoint. 
+						This is still possible, and useful, but if you want to be more precise and filter the content server side before it’s returned, 
+						the new filter endpoint might be what you’re looking for. Let’s say you only want to retrieve content of a specific 
+						Document Type that contains a specific phrase in a specific property.</p>
+					<br />
+					<h3>What's new on Umbraco Cloud</h3>
+					<p>If you have an organisation set up on Umbraco Cloud, you’ll find that the overview of projects and members of an organisation has been 
+						given an overhaul to provide you with a better overview. This is done in line with the overall brand “make-over”of the 
+						Umbraco Cloud portal which we released in November. You’ll now see easy access to the different views for your organisation in a menu on the left.</p>
+					<img class="img-fluid" src="images/cloud-new.png" /><br />
+					<br />
+					<h3>Upcoming Release: Umbraco Deploy 3.3</h3>
+					<p>As mentioned in previous Product Updates we have been working on an improved Partial Restore feature for 
+						Umbraco Cloud making it a breeze to get existing projects up and running with real content. 
+						This feature is now complete and undergoing the last round of testing. <br />
+
+						We aim to release this on January 7th with a new minor version of Umbraco Deploy. <br />
+						
+						From this date, all existing projects on Umbraco Cloud can get this by upgrading Umbraco Deploy on the project page and 
+						all new projects will be running the latest version of Deploy when it is released. 
+						This release will be for version 8 and we’ll release this functionality for version 7 projects as soon as it’s backported and tested.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Related story -->
+		<div class="container-fluid orange-bg">
+			<div class="container">
+				<div class="row section">
+					<div class="col-md-12 blog-related">
+						<h4>Related story:</h4>
+						<a href="#">
+							<h5>Product Update: Highlights of 2019</h5>
+							<p>‘Tis the season to be jolly, launch new products, release new features and plan for next year. 
+								Don’t worry, I’m not going to sing it for you, but I’ll take you through recent product news and give you some insight as to what you can expect in December - 
+								and the beginning of 2020.<br />
+								<span class="font-italic">Written by Sofie Toft</span></p>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>	
