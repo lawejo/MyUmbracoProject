@@ -4,13 +4,9 @@
     Layout = "master.cshtml";
 
     //Dynamic case  Image
-    var caseImageMedia = Model.Value<IPublishedContent>("caseImage");
-    string caseImageUrl = string.Empty;
 
-    if (caseImageMedia != null)
-    {
-        caseImageUrl = caseImageMedia.Url();
-    }
+    var caseImage = Model.Value<IPublishedContent>("caseImage");
+    var caseImageUrl = caseImage?.Url() ?? string.Empty;
 
     var buttonText = Model.Value<string>("buttonText");
     var buttonUrl = Model.Value<string>("buttonUrl");
@@ -29,9 +25,7 @@
     </div>
 
     <div>
-        @if (!string.IsNullOrWhiteSpace(buttonText))
-
-        {
+        @if (!string.IsNullOrWhiteSpace(buttonText)){
             <a target="_blank" href="@buttonUrl" class="primary-button">@buttonText</a>
         }
     </div>
@@ -41,7 +35,6 @@
 
 @if (showCases){
 <section>
-
     @{
         var selection = Umbraco.Content(Guid.Parse("562c581c-09ab-43fc-9271-132c0790ffdc"))
 
@@ -53,14 +46,11 @@
     }
     <div class="cases-container">
         @foreach (var item in selection)
-
         {
-
             var itemMedia = item.Value<IPublishedContent>("caseImage");
             var itemName = item.Value<string>("clientName");
             var itemHeader = item.Value<string>("header");
             var itemLeadText = item.Value<string>("leadText");
-
             var itemMediaUrl = itemMedia?.Url();
 
             <article class="case">
@@ -72,7 +62,5 @@
             </article>
         }
     </div>
-
-
 </section>
 }

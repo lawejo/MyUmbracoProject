@@ -3,14 +3,6 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
 	Layout = "master.cshtml";
-	var mediaItem = Umbraco.Media(Guid.Parse("03b66a9f-1b73-4a9e-b39c-482f4cdf5ea2"));
-
-	string url = string.Empty;
-	if (mediaItem != null)
-    {
-        url = mediaItem.Url();
-     }
-
 	}
 
 <section class="hero-section">
@@ -22,10 +14,4 @@
 			<a href="@Model.Value("buttonSecondaryUrl")">@Model.Value("buttonSecondaryText")</a>
 		</div>
 	</div>
-</section>
-
-<section>
-<h2></h2>
-<h4></h4>
-<p></p>
 </section>
